@@ -14,4 +14,7 @@ return array(
 		
 		
 		'BASE_URL' => 'http://localhost:8080/queueup',
+		
+		'ADMIN_USERNAME' => 'admin',
+		'ADMIN_PASSWORD' => '123456',
 );

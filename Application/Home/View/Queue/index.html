@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <include file="common/top" />
+    <style>
+        .define-jqgrid-image{
+            width: 200px;
+            height: 150px;
+        }
+    </style>
+    <script language='javascript' src='{$base_url}/Public/js/flow.min.js'></script>
+    <script type="text/ecmascript" src="{$base_url}/Public/js/uploadfile.js"></script>
+
+    <title>排队管理</title>
+    <style>
+        .next{
+            width: 64px;
+            height: 64px;
+        }
+    </style>
+</head>
+<body>
+<include file="common/main" />
+<div style="margin:0 20px 0 20px;width: 500px;">
+
+    <foreach name="result" item="vo">
+
+        <div class="media" style="border-bottom: 1px dotted;padding-bottom: 10px;">
+            <div class="media-body">
+                <h4 class="media-heading">{$vo.description}桌</h4>
+                排队等待人数：{$vo.queue_num}人
+                当前轮到号：{$vo.current_number}号
+
+            </div>
+            <a class="media-right" href="#">
+                <button type="button" class="btn btn-default next" onclick="next({$vo.id});">下一位</button>
+            </a>
+        </div>
+
+    </foreach>
+
+</div>
+<script type="text/javascript">
+function next(id){
+    $.post(
+            '{$base_url}/index.php/home/queue/do_next',
+            { "cat_id": id },
+            function(data){
+                alert('操作成功');
+                location.reload();
+            }, "json");
+}
+</script>
+
+
+</body>
+</html>
+
+

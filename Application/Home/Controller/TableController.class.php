@@ -11,7 +11,7 @@ class TableController extends BaseController {
 		foreach($result as $row){
 			$category[] = $row['id'].':'.$row['description'];
 		}
-		
+		//var_dump($category);
 		$this->assign('category',implode(';',$category));
 		$this->display('Table:index');
 	}
