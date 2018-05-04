@@ -20,10 +20,10 @@ CREATE TABLE IF NOT EXISTS `category` (
 -- 转存表中的数据 `category`
 --
 --
---INSERT INTO `category` (`id`, `label`, `description`, `updated_at`) VALUES
---(1, 'A', '1-2人', 1483248040),
---(2, 'B', '3-4人', 1483259332),
---(3, 'C', '5-10人', 1483248550),
+INSERT INTO `category` (`id`, `label`, `description`, `updated_at`) VALUES
+(1, 'A', '1-2人', 1483248040),
+(2, 'B', '3-4人', 1483259332),
+(3, 'C', '5-10人', 1483248550);
 --(4, 'D', '10人以上', 1483248590);
 
 -- --------------------------------------------------------
