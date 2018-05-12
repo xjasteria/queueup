@@ -32,7 +32,13 @@ public function index(){
         if($cat){
             $QueueModel->where("id={$cat['id']}")->save(array('status'=>1));
             $QueueModel->where("category_id={$cat_id} and number<{$cat['number']}")->save(array('status'=>2));
-        }
+//             echo json_encode(array('msg'=>'ok'));
+//         }
+//         if(!$cat){
+//         	$aa='没有下一位';
+//         	echo json_encode(array('msg'=>$aa));
+//         }
+    	}
         echo json_encode(array('msg'=>'ok'));
     }
 }

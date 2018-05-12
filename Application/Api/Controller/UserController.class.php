@@ -96,6 +96,28 @@ class UserController extends BaseController {
         echo json_encode(array('msg'=>'ok'));
     }
 
+//取消排号
+//   	  public function do_qxqueue(){
+//     	$catid = I('post.catid/d',0);
+//     	$guest_id = I('post.guestId/s','');
+//     	$nickname = I('post.nickname/s','');
+//     	$QueueModel = D('queue');
+    
+//     	$current_number = $QueueModel->where("category_id={$catid} and status!=2")->max('number');
+//     	$max_number = $current_number ? $current_number+1 : 1;
+//     	$data = array(
+//     			'guest_id'=>$guest_id,
+//     			'nickname'=>$nickname,
+//     			'number'=>$max_number,
+//     			'table_id'=>0,
+//     			'category_id'=>$catid,
+//     			'status'=>0,
+//     			'updated_at'=>time(),
+//     	);
+//     	$QueueModel->add($data);
+//     	echo json_encode(array('msg'=>'ok'));
+//     }
+
 
     public function wxlogin(){
         $code = $_GET['code'];
