@@ -1,0 +1,19 @@
+<!--pages/order/qxqueue.wxml-->
+<view class="container">
+  <view class="userinfo">
+    <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+    <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+  </view>
+  <view class="section">
+    <view class="section__title bc_orange">{{item.description}}</view>
+    <view class="flex-wrp" style="flex-direction:row;">
+      <text class="flex-item">
+        我的号码：<text class="red">{{queue.label}}</text>号\n
+        排队类目：<text class="red">{{queue.description}}</text>\n 
+        当前轮到号：<text class="red">{{queue.current_number}}</text>号
+      </text>
+    </view>
+  </view> 
+  <button class="refresh" type="warn" bindtap="qxqueue"> 确定取消排队</button>
+  <button class="refresh" type="primary" bindtap="goBack"> 返回</button>
+</view>

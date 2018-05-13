@@ -29,4 +29,7 @@
         </text>       
       </view>
     </view><!--section--> 
+    <view class="content">
+    <button class="gotoqxqueue" type="warn" data-catid="{{item.id}}" bindtap="goToQxQueue">取消排号</button>
+  </view>
 </view><!--container-->

@@ -4,7 +4,8 @@
     "pages/order/index",
     "pages/order/queue",
     "pages/menu/index",
-    "pages/order/my"
+    "pages/order/my",
+    "pages/order/qxqueue"
   ],
   "tabBar": {
     "list": [{

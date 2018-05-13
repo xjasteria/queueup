@@ -54,11 +54,18 @@ class UserController extends BaseController {
         $where = array(
             'guest_id' => $guest_id
         );
+        //$queue = $QueueModel->where($where)->order('id desc')->find();
         $queue = $QueueModel->where($where)->order('id desc')->find();
-
+        
         if(!$queue){
             echo json_encode(array('msg'=>'NO'));
             exit(0);
+        }
+        
+        //判断在当前叫号之后的是否取消叫号
+        if($queue['status'] == 2){
+        	echo json_encode(array('msg'=>'NO'));
+        	exit(0);
         }
         $cat =  $CategoryModel->field('id,label,description')->where("id={$queue['category_id']}")->find();
 
@@ -97,26 +104,22 @@ class UserController extends BaseController {
     }
 
 //取消排号
-//   	  public function do_qxqueue(){
-//     	$catid = I('post.catid/d',0);
-//     	$guest_id = I('post.guestId/s','');
-//     	$nickname = I('post.nickname/s','');
-//     	$QueueModel = D('queue');
-    
-//     	$current_number = $QueueModel->where("category_id={$catid} and status!=2")->max('number');
-//     	$max_number = $current_number ? $current_number+1 : 1;
-//     	$data = array(
-//     			'guest_id'=>$guest_id,
-//     			'nickname'=>$nickname,
-//     			'number'=>$max_number,
-//     			'table_id'=>0,
-//     			'category_id'=>$catid,
-//     			'status'=>0,
-//     			'updated_at'=>time(),
-//     	);
-//     	$QueueModel->add($data);
-//     	echo json_encode(array('msg'=>'ok'));
-//     }
+  	  public function do_qxqueue(){
+    	$guest_id = I('post.guestId/s','');
+    	$nickname = I('post.nickname/s','');
+    	$QueueModel = D('queue');
+    	
+//     	$data1 = array('status','updated_at');
+//     	$data2 = array(2,time());
+//     	$result = $QueueModel->where("number={$number} and status!=2")->setField($data1,$data2);
+    	
+ 	  	$cat = $QueueModel->where("nickname='$nickname'")->order('id desc')->limit(1)->find();
+    	echo $guest_id."aaaaaaaa";
+    	if($cat){
+    	     	$QueueModel->where("id={$cat['id']}")->save(array('status'=>2,'updated_at'=>time()));
+    		}
+    	echo json_encode(array('msg'=>'ok')); 		
+    }
 
 
     public function wxlogin(){

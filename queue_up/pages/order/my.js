@@ -6,6 +6,12 @@ Page({
     userInfo: null,
     queue: null
   },
+  goToQxQueue: function (e) {
+    var catid = e.target.dataset.catid;
+    wx.navigateTo({
+      url: '../order/qxqueue?catid=' + catid
+    })
+  },
   reFresh: function () {
     var that = this
     wx.request({
