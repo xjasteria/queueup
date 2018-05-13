@@ -1,5 +1,5 @@
 <!--index.wxml-->
-<button open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">同意授权登录</button>
+<button open-type="getUserInfo">同意授权登录</button>
 <view class="container">
   <view class="refresh">
     <button type="primary" bindtap="reFresh">刷新最新进度</button>

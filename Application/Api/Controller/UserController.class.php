@@ -120,27 +120,27 @@ class UserController extends BaseController {
 
 
     public function wxlogin(){
-        $code = $_GET['code'];
-        $url_format = 'https://api.weixin.qq.com/sns/jscode2session?appid=%s&secret=%s&js_code=%s&grant_type=authorization_code';
-        $url = sprintf($url_format,C('APPID'),C('APPSECRET'),$code);
-        $json = file_get_contents($url);
-        $data = json_decode($json,true);
-        if($data['openid']){
-            $data['created_at'] = time();
-            $UserModel = M('user');
-            $where = array(
-                "openid"=>$data['openid']
-            );
-
-            if($UserModel->where($where)->find()){
-                $UserModel->where($where)->save($data);
-            }else{
-                $UserModel->add($data);
-            }
-            echo json_encode(array('msg'=>'ok','openid'=>$data['openid']));
-        }else{
-            echo json_encode(array('msg'=>'error'));
-        }
+    	$code = $_GET['code'];
+    	$url_format = 'https://api.weixin.qq.com/sns/jscode2session?appid=%s&secret=%s&js_code=%s&grant_type=authorization_code';
+    	$url = sprintf($url_format,C('APPID'),C('APPSECRET'),$code);
+    	$json = file_get_contents($url);
+    	$data = json_decode($json,true);
+    	if($data['openid']){
+    		$data['created_at'] = time();
+    		$UserModel = M('user');
+    		$where = array(
+    				"openid"=>$data['openid']
+    		);
+    	
+    		if($UserModel->where($where)->find()){
+    			$UserModel->where($where)->save($data);
+    		}else{
+    			$UserModel->add($data);
+    		}
+    		echo json_encode(array('msg'=>'ok','openid'=>$data['openid']));
+    	}else{
+    		echo json_encode(array('msg'=>'error'));
+    	}
     }
 
 
