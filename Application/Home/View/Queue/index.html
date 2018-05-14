@@ -23,7 +23,7 @@
 <body>
 <include file="common/main" />
 <div style="margin:0 20px 0 20px;width: 500px;">
-
+            
     <foreach name="result" item="vo">
 
         <div class="media" style="border-bottom: 1px dotted;padding-bottom: 10px;">
@@ -34,7 +34,7 @@
 
             </div>
             <a class="media-right" href="#">
-                <button type="button" class="btn btn-default next">过号</button>
+                <button type="button" class="btn btn-default next" onclick="pass({$vo.id});">过号</button>
             </a>
             <a class="media-right" href="#">
                 <button type="button" class="btn btn-default next" onclick="next({$vo.id});">下一位</button>
@@ -61,6 +61,18 @@ function next(id){
             
             function(data){
                 alert('操作成功');
+                location.reload();
+            }, "json");
+    
+}
+
+function pass(id){
+    $.post(
+            '{$base_url}/index.php/home/queue/do_pass',
+            { "cat_id": id },   
+            
+            function(data){
+                alert('过号成功，已将它添置最后');
                 location.reload();
             }, "json");
     

@@ -66,7 +66,7 @@ Page({
       duration: 4000,
       success: function () {
         wx.switchTab({
-          url: '../order/my'
+          url: '../order/index'
         })
       }
     })
