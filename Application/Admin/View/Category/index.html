@@ -1,12 +1,12 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-<include file="common/top" />
-<title>餐桌管理</title>
+    <include file="common/top" />
+    <title>餐桌类型管理</title>
 </head>
 
 <body>
-
 <include file="common/main" />
 <div style="margin-left:20px">
     <table id="jqGrid"></table>
@@ -16,8 +16,8 @@
 
     $(document).ready(function () {
         $("#jqGrid").jqGrid({
-            url: '{$base_url}/index.php/home/table/query',
-            editurl:'{$base_url}/index.php/home/table/update',
+            url: '{$base_url}/index.php/admin/category/query',
+            editurl:'{$base_url}/index.php/admin/category/update',
             mtype: "GET",
             styleUI : 'Bootstrap',
             datatype: "json",
@@ -30,34 +30,16 @@
                     editable: false
                 },
                 {
-                    label: '内部餐桌编号',
-                    name: 'inner_number',
+                    label: '餐桌编号',
+                    name: 'label',
                     width: 140,
                     editable: true
                 },
                 {
-                    label : '餐桌类型',
-                    name: 'category_id',
+                    label : '承载人数',
+                    name: 'description',
                     width: 100,
-                    editable: true,
-                    search:false,
-                    edittype: "select",
-                    formatter:'select',
-                    editoptions: {
-                       value: "{$category}"
-                    }
-
-                },
-                {
-                    label : '使用情况',
-                    name: 'status',
-                    width: 100,
-                    editable: true,
-                    edittype: "select",
-                    formatter:'select',
-                    editoptions: {
-                        value: "0:未使用;1:已使用"
-                    }
+                    editable: true
                 },
                 {
                     label: '更新时间',
@@ -74,8 +56,7 @@
             closeAfterAdd:true,
             closeAfterEdit:true,
             width: 780,
-            autoheight: true,
-            height:500,
+            height: 200,
             rowNum: 10,
             pager: "#jqGridPager"
         });
@@ -118,3 +99,4 @@
 
 
 </body>
+</html>

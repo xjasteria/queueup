@@ -1,18 +1,18 @@
 <?php
-namespace Home\Controller;
+namespace Admin\Controller;
 use Think\Controller;
 class CategoryController extends BaseController {
 	public function index(){
 		$this->assign('base_url',__ROOT__);
 		$this->display('Category:index');
 	}
-	
+
 	public function query(){
 		$fields = array('page', 'rows', 'sidx', 'sord', 'type', 'query', 'value', '_search', 'searchField', 'searchString', 'searchOper',);
 		$params = $this->I($fields);
-	
+
 		$offset = ($params['page'] - 1) * $params['rows'];
-	
+
 		$p = array('offset' => $offset, 'limit' => $params['rows']);
 		$CategoryModel = M('category');
 		$result = $CategoryModel->limit($p['offset'],$p['limit'])->select();
@@ -24,17 +24,17 @@ class CategoryController extends BaseController {
 				'total' => $total,
 				'rows' => $result,
 		);
-	
+
 		echo json_encode($data);
 	}
-	
-	
+
+
 	public function update(){
 		$fields = array('id', 'label', 'description');
 		$params = $this->I($fields);
-	
+
 		$CategoryModel = M('category');
-	
+
 		$oper = I('post.oper');
 		if ($oper == 'del') {//删除
 			$CategoryModel->where("id={$params['id']}")->delete();
@@ -47,9 +47,9 @@ class CategoryController extends BaseController {
 			$params['updated_at'] = time();
 			$CategoryModel->add($params);
 		}
-	
+
 		echo json_encode(array('msg'=>'ok'));
 	}
-	
+
 }
 ?>

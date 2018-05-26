@@ -15,8 +15,8 @@ class LoginController extends Controller
     {
         $username = I('post.username/s', '');
         $pasword = I('post.password/s', '');
-        if ($username == C('ADMIN_USERNAME') && $pasword == C('ADMIN_PASSWORD')) {
-            cookie('token',md5(C('ADMIN_PASSWORD')),86400);
+        if ($username == C('USER_USERNAME') && $pasword == C('USER_PASSWORD')) {
+            cookie('usertoken',md5(C('USER_USERNAME'.'USER_PASSWORD')),86400);
             $this->success('登录成功！',C('BASE_URL').'/index.php/home/index/index',3);
         } else {
             $this->error('登录失败，请检查用户名和密码是否正确！',C('BASE_URL').'/index.php/home/login/index',3);

@@ -21,6 +21,9 @@ return array(
 		'ADMIN_USERNAME' => 'admin',
 		'ADMIN_PASSWORD' => '123456',
 		
-		'MODULE_ALLOW_LIST'    =>    array('Home','Api'),
-		'DEFAULT_MODULE'       =>    'Home',
+		'USER_USERNAME' => 'xujing',
+		'USER_PASSWORD' => '123456',
+		
+// 		'MODULE_ALLOW_LIST'    =>    array('Home','Api'),
+// 		'DEFAULT_MODULE'       =>    'Home',
 );

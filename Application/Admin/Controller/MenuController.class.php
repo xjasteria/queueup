@@ -1,18 +1,18 @@
 <?php
-namespace Home\Controller;
+namespace Admin\Controller;
 use Think\Controller;
 class MenuController extends BaseController {
 	public function index(){
 		$this->assign('base_url',__ROOT__);
 		$this->display('Menu:index');
 	}
-	
+
 	public function query(){
 		$fields = array('page', 'rows', 'sidx', 'sord', 'type', 'query', 'value', '_search', 'searchField', 'searchString', 'searchOper',);
 		$params = $this->I($fields);
-	
+
 		$offset = ($params['page'] - 1) * $params['rows'];
-	
+
 		$p = array('offset' => $offset, 'limit' => $params['rows']);
 		$MenuModel = M('menu');
 		$result = $MenuModel->limit($p['offset'],$p['limit'])->select();
@@ -24,17 +24,17 @@ class MenuController extends BaseController {
 				'total' => $total,
 				'rows' => $result,
 		);
-	
+
 		echo json_encode($data);
 	}
-	
-	
+
+
 	public function update(){
 		$fields = array('id', 'name', 'image','description','price','status');
 		$params = $this->I($fields);
-	
+
 		$MenuModel = M('menu');
-	
+
 		$oper = I('post.oper');
 		if ($oper == 'del') {//删除
 			$MenuModel->where("id={$params['id']}")->delete();
@@ -46,16 +46,16 @@ class MenuController extends BaseController {
 			$params['updated_at'] = time();
 			$MenuModel->add($params);
 		}
-	
+
 		echo json_encode(array('msg'=>'ok'));
 	}
-	
+
 	public function upload(){
 		$data = $this->upload_local();
-	
+
 		echo json_encode($data);
 	}
-	
+
 	private function upload_local(){
 		$base = dirname($_SERVER['SCRIPT_FILENAME']);
 		$upload = new \Think\Upload();// 实例化上传类
@@ -78,7 +78,7 @@ class MenuController extends BaseController {
 					'url'=>$url
 			);
 		}
-	
+
 	}
 }
 ?>

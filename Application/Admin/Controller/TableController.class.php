@@ -1,5 +1,5 @@
 <?php
-namespace Home\Controller;
+namespace Admin\Controller;
 use Think\Controller;
 class TableController extends BaseController {
 	public function index(){
@@ -15,13 +15,13 @@ class TableController extends BaseController {
 		$this->assign('category',implode(';',$category));
 		$this->display('Table:index');
 	}
-	
+
 	public function query(){
 		$fields = array('page', 'rows', 'sidx', 'sord', 'type', 'query', 'value', '_search', 'searchField', 'searchString', 'searchOper',);
 		$params = $this->I($fields);
-	
+
 		$offset = ($params['page'] - 1) * $params['rows'];
-	
+
 		$p = array('offset' => $offset, 'limit' => $params['rows']);
 		$TablesModel = M('tables');
 		$result = $TablesModel->limit($p['offset'],$p['limit'])->select();
@@ -36,17 +36,17 @@ class TableController extends BaseController {
 				'total' => $total,
 				'rows' => $result,
 		);
-	
+
 		echo json_encode($data);
 	}
-	
-	
+
+
 	public function update(){
 		$fields = array('id', 'inner_number', 'category_id','status');
 		$params = $this->I($fields);
-	
+
 		$TablesModel = M('tables');
-	
+
 		$oper = I('post.oper');
 		if ($oper == 'del') {//删除
 			$TablesModel->where("id={$params['id']}")->delete();
@@ -58,7 +58,7 @@ class TableController extends BaseController {
 			$params['updated_at'] = time();
 			$TablesModel->add($params);
 		}
-	
+
 		echo json_encode(array('msg'=>'ok'));
 	}
 }
