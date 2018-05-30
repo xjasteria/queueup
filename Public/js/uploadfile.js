@@ -37,7 +37,7 @@ function flowuploadimg(browser_dom,input_name,filetype) {
     }
 
     var r = new Flow({
-        target: base_url+'/index.php/home/menu/upload',
+        target: base_url+'/index.php/admin/menu/upload',
         chunkSize: chunkSize,
         testChunks: false
     });

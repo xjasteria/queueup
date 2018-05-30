@@ -18,11 +18,13 @@ return array(
 		
 		'BASE_URL' => 'http://localhost:8080/queueup',
 		
-		'ADMIN_USERNAME' => 'admin',
-		'ADMIN_PASSWORD' => '123456',
+// 		'ADMIN_USERNAME' => 'admin',
+// 		'ADMIN_PASSWORD' => '123456',
 		
-		'USER_USERNAME' => 'xujing',
-		'USER_PASSWORD' => '123456',
+// 		'USER_USERNAME' => 'xujing',
+// 		'USER_PASSWORD' => '123456',
+		
+		'LOAD_EXT_CONFIG'=>'new',
 		
 // 		'MODULE_ALLOW_LIST'    =>    array('Home','Api'),
 // 		'DEFAULT_MODULE'       =>    'Home',

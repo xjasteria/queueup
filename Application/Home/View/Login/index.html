@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
-    <title>服务员登录页</title>
+    <title>登录页</title>
 
     <!-- Bootstrap core CSS -->
     <link href="//cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
@@ -25,14 +25,13 @@
 <div class="container">
 
     <form class="form-signin" role="form" action="{$base_url}/index.php/home/login/do_login" method="post">
-        <h2 class="form-signin-heading">服务员请登录</h2>
+        <h2 class="form-signin-heading">请登录</h2>
         <input type="text" name="username" class="form-control" placeholder="服务员昵称" required autofocus>
         <input type="password" name="password" class="form-control" placeholder="密码" required>
-      <!--  <div class="checkbox">
-            <label>
-                <input type="checkbox" value="remember-me"> 记住我
-            </label>
-        </div>      --> 
+        <select name="identity" class="form-control">
+			<option value="admin" selected="selected">管理员</option>
+			<option value="waiter">服务员</option>
+		</select>
         <button class="btn btn-lg btn-primary btn-block" type="submit">登录</button>
     </form>
 

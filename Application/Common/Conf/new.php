@@ -1,0 +1,1 @@
+<?php return array('ADMIN_USERNAME'=>'admin','ADMIN_PASSWORD'=>'123456','USER_USERNAME'=>'lalala','USER_PASSWORD'=>'123456',); ?>
