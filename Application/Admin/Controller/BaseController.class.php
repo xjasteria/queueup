@@ -6,7 +6,7 @@ class BaseController extends Controller {
         parent::__construct();
         $token = cookie('token');
         if(empty($token) || $token != md5(C('ADMIN_USERNAME'.'ADMIN_PASSWORD'))){
-            $this->error('您长时间未操作已退出登录，请重新登录！',C('BASE_URL').'/index.php/admin/login/index',3);
+            $this->error('您长时间未操作已退出登录，请重新登录！',C('BASE_URL').'/index.php/home/login/index',3);
         }
 	}
 

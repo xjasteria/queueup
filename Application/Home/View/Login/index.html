@@ -26,12 +26,12 @@
 
     <form class="form-signin" role="form" action="{$base_url}/index.php/home/login/do_login" method="post">
         <h2 class="form-signin-heading">请登录</h2>
-        <input type="text" name="username" class="form-control" placeholder="服务员昵称" required autofocus>
-        <input type="password" name="password" class="form-control" placeholder="密码" required>
         <select name="identity" class="form-control">
 			<option value="admin" selected="selected">管理员</option>
 			<option value="waiter">服务员</option>
 		</select>
+        <input type="text" name="username" class="form-control" placeholder="昵称" required autofocus>
+        <input type="password" name="password" class="form-control" placeholder="密码" required>
         <button class="btn btn-lg btn-primary btn-block" type="submit">登录</button>
     </form>
 

@@ -46,6 +46,17 @@ class UserController extends BaseController {
 
         echo json_encode($cat);
     }
+    ///////////////////判断是否有该餐桌
+    public function pd_catid(){
+    	$catid = I('get.catid/d',0);
+    	$Tables = M('tables');
+    	$cat = $Tables->field('id,category_id,status')->where("category_id={$catid} and status =1")->find();
+    	$info = 0;
+    	if(!$cat){
+    		$info = 1;
+    	}
+    	echo json_encode($info);
+    }
 
     public function my_queue(){
         $guest_id = I('get.gusetId/s','');
@@ -114,7 +125,7 @@ class UserController extends BaseController {
 //     	$result = $QueueModel->where("number={$number} and status!=2")->setField($data1,$data2);
     	
  	  	$cat = $QueueModel->where("nickname='$nickname'")->order('id desc')->limit(1)->find();
-    	echo $guest_id."aaaaaaaa";
+//     	echo $guest_id."aaaaaaaa";
     	if($cat){
     	     	$QueueModel->where("id={$cat['id']}")->save(array('status'=>2,'updated_at'=>time()));
     		}
