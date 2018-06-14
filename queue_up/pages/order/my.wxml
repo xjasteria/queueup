@@ -24,7 +24,7 @@
             <text class="red">正在叫您的号码，欢迎就餐</text>
           </block>
           <block wx:if="{{queue.ahead_count < 0}}">
-            <text class="red">您的号码已过期，请重新取号！</text>
+            <text class="red">您的号码已过期！</text>
           </block>       
         </text>       
       </view>

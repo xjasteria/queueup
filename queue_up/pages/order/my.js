@@ -24,7 +24,7 @@ Page({
           wx.showModal({
             title: '提示',
             showCancel: false,
-            content: '您还未取号，将跳转到取号页面',
+            content: '您还未取号，或取号已过期，将跳转到取号页面',
             success: function (res) {
               if (res.confirm) {
                 wx.switchTab({

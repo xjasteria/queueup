@@ -14,11 +14,58 @@ Page({
       catid: options['catid']
     })
     //调用应用实例的方法获取全局数据
-    app.getUserInfo(function (userInfo) {
-      //更新数据
-      that.setData({
-        userInfo: userInfo
-      })
+    //判断用户是否授权登录
+    wx.getSetting({
+      success: function (res) {
+        if (res.authSetting['scope.userInfo']) {
+          app.getUserInfo(function (userInfo) {
+            //更新数据
+            that.setData({
+              userInfo: userInfo
+            })
+          })
+        }
+        else {
+          wx.showModal({
+            title: '提示',
+            showCancel: false,
+            content: '您还未授权登录，使用此功能请先授权',
+            success: function (res) {
+              if (res.confirm) {
+                wx.switchTab({
+                  url: '../order/index'
+                })
+              }
+            }
+          })
+        }
+      }
+    })
+    //判断是否有该类餐桌
+    wx.request({
+      url: common.baseUrl + 'index.php/api/user/pd_catid?catid=' + this.data.catid,
+      header: {
+        'content-type': 'application/json'
+      },
+      success: function (res) {
+        if( res.data == 1 ) {
+          wx.showModal({
+            title: '提示',
+            showCancel: false,
+            content: '抱歉！暂无此类型的餐桌，请选择其他类型！',
+            success: function (res) {
+              if (res.confirm) {
+                wx.switchTab({
+                  url: '../order/index'
+                })
+              }
+            }
+          })
+        }
+        else {
+
+        }
+      }  
     })
   },
   onShow: function () {
